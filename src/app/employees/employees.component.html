@@ -1,0 +1,15 @@
+<menu></menu>
+<input type="button" value="Add Employee" (click)="onAdd(this.employees)" >
+<input type="button" value="Remove Employee" (click)="onRemove(empnum)">
+<input type="text" placeholder="id" [(ngModel)]="empnum">
+<h2>Customers</h2>
+<input type="text" placeholder="name" [(ngModel)]="employee.name">
+<input type="text" placeholder="email" [(ngModel)]="employee.email">
+<input type="text" placeholder="address" [(ngModel)]="employee.address">
+<input type="text" placeholder="phone" [(ngModel)]="employee.phone">
+<ul class="customer">
+    <li *ngFor="let employee of employees" >    
+        {{employee.id}} {{employee.name}} {{employee.email}} {{employee.phone}} {{employee.address}}
+  </li>
+</ul>
+
