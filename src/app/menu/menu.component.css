@@ -1,0 +1,21 @@
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px 0px 0px -41px;
+}
+.navbar-nav {
+    display: inline-block;
+    flex-direction: column;
+    padding: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.navbar>.container, .navbar>.container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+menu{
+    margin: 0px 0px 0px -20px;
+}

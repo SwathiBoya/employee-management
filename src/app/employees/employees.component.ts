@@ -9,6 +9,7 @@ import { EMPLOYEES } from '../employeemock';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
+
   employees = EMPLOYEES;
   employee: Employee = {
     id: 0,
@@ -20,31 +21,47 @@ export class EmployeesComponent implements OnInit {
   constructor(private router: Router) { }
 
   onAdd(){
-      if(this.employee.name.length == 0 && this.employee.email.length == 0){
-        alert("Please fill Username and password");
-      }
-      else if(this.employee.name.length > 0 && this.employee.email.length > 0){
-        this.employee.id = this.employees.length;
-        this.employee = {
-          id: this.employees.length + 1,
-          name: this.employee.name,
-          email:this.employee.email,
-          address:this.employee.address,
-          phone:this.employee.phone
+            if(this.employee.name.length == 0 && this.employee.email.length == 0)
+            {
+              alert("Please fill Username and password");
+            }
+            else if(this.employee.name.length > 0 && this.employee.email.length > 0)
+            {
+              this.employee.id = this.employees.length;
+              this.employee = {
+                id: this.employees.length + 1,
+                name: this.employee.name,
+                email:this.employee.email,
+                address:this.employee.address,
+                phone:this.employee.phone
 
-        };
-        this.employees.push(this.employee);
-        alert("Add customer");
+              };
+              
+          this.employees.push(this.employee);          
+          this.employee = {id:0, name:'', email:'', address:'',phone:1};
+          alert("Add customer");
       }
   }
   onRemove(empnum){
-  var employeeList:Employee[] = [];
-  for(var i = 0;i<this.employees.length;i++){
-    if(this.employees[i].id != empnum ){
-      employeeList.push(this.employees[i]);
+    var employeeList:Employee[] = [];
+    for(var i = 0;i<this.employees.length;i++){
+      if(this.employees[i].id != empnum ){
+        employeeList.push(this.employees[i]);
+      }
+    }
+      this.employees=employeeList;
+    }
+  onDelete(employee){
+    for( var i=0; i<this.employees.length;i++)
+    {
+      if(this.employees[i].id==employee.id){
+        this.employees.splice(i,1);
+      }
     }
   }
-  this.employees=employeeList;
+  selectedEmployee:Employee;
+  onSelect(employee: Employee): void {
+    this.selectedEmployee = employee;
   }
   ngOnInit() {
   }
